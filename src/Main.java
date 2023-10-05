@@ -39,7 +39,7 @@ public class Main{
         }
 
         System.out.println("good job! Now, you continue on your journey as you come across a river.");
-        System.out.println("You must build a bridge to get across the river. To build a bridge, you have to collect logs around you. Type in a number of logs to collect.");
+        System.out.println("You must build a bridge to get across the river. To build a bridge, you have to collect logs around you. Type in a number of logs to collect");
         int logs = scanner.nextInt();
         String checkLogs = collectLogs(logs);
         if (checkLogs.equals("Oh No!")) {
@@ -54,6 +54,41 @@ public class Main{
         if(checkLogs.equals("good")){
             System.out.println( "nice guess! you collected enough to build the bridge");
         }
+
+        System.out.println("You cross the bridge and come across a cute dog. What will you name the dog?");
+        String dogName = scanner.next();
+        String named = naming(dogName);
+
+        System.out.println("input the dog's age, but first multiply it by 10");
+        int age = scanner.nextInt();
+        int secondAge = dogAge(age);
+        System.out.println("The dog is named " + dogName + " , and is " + secondAge + " years old. This dog is now yours");
+
+        System.out.println("You must take " + dogName + " on a walk. How many rounds will you walk, input this as a multiple of 4 or divisible by 3");
+        int walk = scanner.nextInt();
+        String walking = dogWalk(walk);
+        if(walking.equals("You lose!")){
+            System.out.println("You lose! This number did not fulfill the conditions. Try again!");
+            System.exit(0);
+        }
+        System.out.println("Great! Quick thinking!");
+        System.out.println("you run into a family member in the jungle. They ask you how many miles have you walked? You don't want this family member to tell the rest of your family how little you actually walked");
+        System.out.println("you tell them that you walked 2 miles more than you actually did");
+        int miles = scanner.nextInt();
+        int milesWalked = milesToWalk(miles);
+        System.out.println("you say you walked " + miles + " miles, but you actually only walked " + milesWalked + " miles");
+
+        System.out.println("you are nearing the exit of the jungle, do you go north, or south?");
+        String direction = scanner.next();
+        String rightWay = direction1(direction);
+
+        if (rightWay.equals("correct")){
+            System.out.println("Great, you are almost there!");
+
+        }
+        else
+            System.out.println("WRONG, you were so close!");
+        System.exit(0);
 
 
     }
@@ -75,6 +110,7 @@ public class Main{
         }
 
     }
+    //method collectLogs
     public static String collectLogs(int logs){
         if(logs>=9 && logs<30){
             return "good";
@@ -84,6 +120,41 @@ public class Main{
 
         }
         else return "OOPS!";
+    }
+
+    //method naming
+    public static String naming(String dogName){
+        System.out.println ("Great! the dog is now named " + dogName);
+        return dogName;
+    }
+
+    //method dogAge
+    public static int dogAge(int age){
+
+        return (age/10);
+    }
+
+    //method dogWalk
+    public static String dogWalk(int walk){
+        int divByFour = walk%4;
+        int timeByThree = walk%3;
+        if(divByFour==0 || timeByThree==0){
+            return "Nice!";
+        }
+        return "You lose!";
+    }
+
+    //method milesToWalk
+    public static int milesToWalk(int miles){
+        return (miles-2);
+    }
+
+    //method direction1
+    public static String direction1(String direction){
+        if(direction.equals("north")){
+            return "correct";
+        }
+        else return "wrong";
     }
 
 }
