@@ -159,20 +159,21 @@ public class Main {
 
     //method enjoyed
     public static String enjoyed(String finish){
-        System.out.println("correct!");
-        if(finish.equals("yes")){
 
+        if(finish.equals("yes")){
+            System.out.println("correct!");
             return "yes";
 
         }
 
+        System.out.println("wrong!");
         return "no";
     }
 
     //method program
     public static String program() {
         int time = 10;
-        System.out.println("you took " + time * 2 + " minutes to complete this game");
+        System.out.println("your dog is now " + time * 2 + " years old!");
         return "10";
     }
 
