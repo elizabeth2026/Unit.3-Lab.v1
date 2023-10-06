@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello! Welcome to the jungle. Your task is to bypass the animals and complete the game without losing");
@@ -51,8 +51,8 @@ public class Main{
             System.out.println("sorry! you collected too many logs. When you tried to build the bridge, the weight made you crash into the river");
             System.exit(0);
         }
-        if(checkLogs.equals("good")){
-            System.out.println( "nice guess! you collected enough to build the bridge");
+        if (checkLogs.equals("good")) {
+            System.out.println("nice guess! you collected enough to build the bridge");
         }
 
         System.out.println("You cross the bridge and come across a cute dog. What will you name the dog?");
@@ -67,7 +67,7 @@ public class Main{
         System.out.println("You must take " + dogName + " on a walk. How many rounds will you walk, input this as a multiple of 4 or divisible by 3");
         int walk = scanner.nextInt();
         String walking = dogWalk(walk);
-        if(walking.equals("You lose!")){
+        if (walking.equals("You lose!")) {
             System.out.println("You lose! This number did not fulfill the conditions. Try again!");
             System.exit(0);
         }
@@ -77,22 +77,24 @@ public class Main{
         int miles = scanner.nextInt();
         int milesWalked = milesToWalk(miles);
         System.out.println("you say you walked " + miles + " miles, but you actually only walked " + milesWalked + " miles");
+        String ending = end();
 
-        System.out.println("you are nearing the exit of the jungle, do you go north, or south?");
-        String direction = scanner.next();
-        String rightWay = direction1(direction);
-
-        if (rightWay.equals("correct")){
-            System.out.println("Great, you are almost there!");
-
+        System.out.println("did you enjoy this game? input yes or no");
+        String finish = scanner.next();
+        String done = enjoyed(finish);
+        if(done.equals("no")){
+            System.out.println("wrong answer");
+            System.exit(0);
         }
-        else
-            System.out.println("WRONG, you were so close!");
+
+        String reallyEnd = program();
         System.exit(0);
 
 
-    }
 
+
+
+    }
 
 
     //method monkey1
@@ -104,57 +106,77 @@ public class Main{
     public static String checkRelax(String relax) {
         if (relax.equals("relax")) {
             return "correct!";
-        } else{
+        } else {
             return "Sorry :(";
 
         }
 
     }
+
     //method collectLogs
-    public static String collectLogs(int logs){
-        if(logs>=9 && logs<30){
+    public static String collectLogs(int logs) {
+        if (logs >= 9 && logs < 30) {
             return "good";
         }
-        if(logs<9){
+        if (logs < 9) {
             return "Oh No!";
 
-        }
-        else return "OOPS!";
+        } else return "OOPS!";
     }
 
     //method naming
-    public static String naming(String dogName){
-        System.out.println ("Great! the dog is now named " + dogName);
+    public static String naming(String dogName) {
+        System.out.println("Great! the dog is now named " + dogName);
         return dogName;
     }
 
     //method dogAge
-    public static int dogAge(int age){
+    public static int dogAge(int age) {
 
-        return (age/10);
+        return (age / 10);
     }
 
     //method dogWalk
-    public static String dogWalk(int walk){
-        int divByFour = walk%4;
-        int timeByThree = walk%3;
-        if(divByFour==0 || timeByThree==0){
+    public static String dogWalk(int walk) {
+        int divByFour = walk % 4;
+        int timeByThree = walk % 3;
+        if (divByFour == 0 || timeByThree == 0) {
             return "Nice!";
         }
         return "You lose!";
     }
 
     //method milesToWalk
-    public static int milesToWalk(int miles){
-        return (miles-2);
+    public static int milesToWalk(int miles) {
+        return (miles - 2);
     }
 
-    //method direction1
-    public static String direction1(String direction){
-        if(direction.equals("north")){
-            return "correct";
-        }
-        else return "wrong";
+    //method end
+    public static String end(){
+        System.out.println("congratulations, you made it to the end!");
+        return null;
     }
+
+    //method enjoyed
+    public static String enjoyed(String finish){
+        System.out.println("correct!");
+        if(finish.equals("yes")){
+
+            return "yes";
+
+        }
+
+        return "no";
+    }
+
+    //method program
+    public static String program() {
+        int time = 10;
+        System.out.println("you took " + time * 2 + " minutes to complete this game");
+        return "10";
+    }
+
+
+
 
 }
